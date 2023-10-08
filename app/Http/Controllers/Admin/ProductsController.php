@@ -70,7 +70,7 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $product = Product::findOrfail($id);
+        $product = Product::where('slug', $id)->firstOrFail();
 
         $validator = Validator::make($request->all(), [
             'name'   => 'required|unique:products,name,'.$product->id,
