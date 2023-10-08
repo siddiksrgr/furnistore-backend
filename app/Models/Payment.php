@@ -17,7 +17,7 @@ class Payment extends Model
 
     public function getPhotoUrlAttribute()
     {
-        return url('payment/' . $this->photo);
+        return url('payment-images/' . $this->photo);
     }
 }
 

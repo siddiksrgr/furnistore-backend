@@ -53,7 +53,7 @@ class ProductsController extends Controller
 
             foreach($request->file('images') as $image) {
                 $name = time().rand(1,50).'.'.$image->extension();
-                $image->move('products', $name);  
+                $image->move('product-images', $name);  
 
                 ProductImage::create([
                     'product_id' => $product->id,
@@ -102,14 +102,14 @@ class ProductsController extends Controller
             if ($request->hasFile('images')) {
                 // delete old product images
                 foreach($product->images as $oldImage){
-                    File::delete(base_path('public/products/' . $oldImage->name)); 
+                    File::delete(base_path('public/product-images/' . $oldImage->name)); 
                     $oldImage->delete();
                 }
 
                 // create new product images
                 foreach($request->file('images') as $newImage) {
                     $name = time().rand(1,50).'.'.$newImage->extension();
-                    $newImage->move('products', $name);  
+                    $newImage->move('product-images', $name);  
     
                     ProductImage::create([
                         'product_id' => $product->id,
@@ -148,7 +148,7 @@ class ProductsController extends Controller
         $product = Product::findOrfail($id);
 
         foreach($product->images as $image){
-            File::delete(base_path('public/products/' . $image->name)); 
+            File::delete(base_path('public/product-images/' . $image->name)); 
             $image->delete();
         }
         

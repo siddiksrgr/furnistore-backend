@@ -22,7 +22,7 @@ class ProductImage extends Model
 
     public function getImageUrlAttribute()
     {
-        return url('images/' . $this->name);
+        return url('product-images/' . $this->name);
     }
 }
 

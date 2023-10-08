@@ -45,7 +45,7 @@ class PaymentsController extends Controller
      
           $image = $request->file('image');
           $name = time().rand(1,50).'.'.$image->extension();
-          $image->move('payments', $name);  
+          $image->move('payment-images', $name);  
 
           $transaction = Transaction::findOrfail($request->transaction_id);
           
